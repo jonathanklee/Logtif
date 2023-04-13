@@ -8,7 +8,8 @@ Indeed, you are not always in front of your computer and connected to adb lookin
 
 That's where Logtif enters the party.
 
-Logtif allows you to easily create a notification for some INFO, WARNING or ERROR messages.
+Logtif allows you to easily create a notification to display some INFO, WARNING or ERROR messages.
+
 
 # Usage
 
@@ -23,6 +24,8 @@ Log some messages:
 ```
 Logtif.log(Logtif.ERROR, "App reached an invalid state")
 ```
+
+:memo: For Android >= 13, make sure that the application using Logtig has requested the runtime permission [android.permission.POST_NOTIFICATIONS](https://developer.android.com/reference/android/Manifest.permission#POST_NOTIFICATIONS)
 
 # Credits
 
