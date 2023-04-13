@@ -10,6 +10,28 @@ That's where Logtif enters the party.
 
 Logtif allows you to easily create a notification to display some INFO, WARNING or ERROR messages.
 
+# Build
+
+[![](https://jitpack.io/v/jonathanklee/Logtif.svg)](https://jitpack.io/#jonathanklee/Logtif)
+
+Add Logtif in your repositories:
+
+```
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+Add the dependency:
+
+```
+dependencies {
+    implementation 'com.github.jonathanklee:Logtif:VERSION'
+}
+```
 
 # Usage
 
