@@ -14,7 +14,7 @@ Logtif allows you to easily create a notification to display some INFO, WARNING 
 
 [![](https://jitpack.io/v/jonathanklee/Logtif.svg)](https://jitpack.io/#jonathanklee/Logtif)
 
-Add Logtif in your repositories:
+Add Jitpack in your repositories:
 
 ```
 allprojects {
@@ -25,7 +25,7 @@ allprojects {
 }
 ```
 
-Add the dependency:
+Add the Logtif dependency:
 
 ```
 dependencies {
