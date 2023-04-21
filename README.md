@@ -38,13 +38,13 @@ dependencies {
 Initialize Logtif:
 
 ```
-Logtif.init(context, "Your application")
+Logtif.init(context, "MyAppChannel")
 ```
 
 Log some messages:
 
 ```
-Logtif.log(Logtif.ERROR, "App reached an invalid state")
+Logtif.log(Logtif.ERROR, "App reached an invalid state %d", state)
 ```
 
 :memo: For Android >= 13, make sure that the application using Logtig has requested the runtime permission [android.permission.POST_NOTIFICATIONS](https://developer.android.com/reference/android/Manifest.permission#POST_NOTIFICATIONS)
