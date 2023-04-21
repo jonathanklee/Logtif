@@ -49,7 +49,8 @@ object Logtif {
         }
     }
 
-    fun log(level:Int, text: String) {
+    fun log(level:Int, text: String, vararg args: Any?) {
+
         if (context?.get() == null) {
             return
         }
@@ -64,11 +65,13 @@ object Logtif {
             return
         }
 
-        showNotification(text, level)
+        val title = Class.forName(Thread.currentThread().stackTrace[3].className).simpleName ?: "unknownClassName"
+
+        showNotification(title, text, level, *args)
     }
 
     @SuppressLint("MissingPermission")
-    private fun showNotification(text: String, level: Int) {
+    private fun showNotification(title: String, text: String, level: Int, vararg args: Any?) {
 
         val priority = when (level) {
             INFO -> NotificationCompat.PRIORITY_DEFAULT
@@ -84,10 +87,12 @@ object Logtif {
             else -> "UNKNOWN"
         }
 
+        val message = formatMessage(text, args)
+
         val builder = NotificationCompat.Builder(context?.get()!!, channel)
             .setSmallIcon(R.mipmap.ic_logtif_foreground)
-            .setContentTitle(channel)
-            .setContentText("$prefix: $text")
+            .setContentTitle(title)
+            .setContentText("$prefix $message")
             .setPriority(priority)
 
         with(NotificationManagerCompat.from(context?.get()!!)) {
@@ -110,4 +115,6 @@ object Logtif {
 
         return true
     }
+
+    private fun formatMessage(message: String, args: Array<out Any?>) = message.format(*args)
 }
