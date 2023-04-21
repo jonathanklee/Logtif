@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace 'com.klee.logtif'
-    compileSdk 33
+    compileSdk versions.compileSdk
 
     defaultConfig {
-        minSdk 24
-        targetSdk 33
+        minSdk versions.minSdk
+        targetSdk versions.compileSdk
         versionName "0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
