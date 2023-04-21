@@ -11,7 +11,7 @@ android {
     defaultConfig {
         minSdk versions.minSdk
         targetSdk versions.compileSdk
-        versionName "0.1"
+        versionName versions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,7 +36,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.github.jonathanklee'
             artifactId = 'Logtif'
-            version = '0.1'
+            version = versions.versionName
 
             afterEvaluate {
                 from components.release
