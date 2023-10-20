@@ -22,7 +22,7 @@ object Logtif {
     private const val TAG = "Logtif"
 
     private lateinit var channel: String
-    private var context: WeakReference<Context>? = null
+    private lateinit var context: WeakReference<Context>
 
     private var notificationId: Long = 0
 
@@ -49,9 +49,9 @@ object Logtif {
         }
     }
 
-    fun log(level:Int, text: String, vararg args: Any?) {
+    fun log(level: Int, text: String, vararg args: Any?) {
 
-        if (context?.get() == null) {
+        if (context.get() == null) {
             return
         }
 
@@ -65,7 +65,9 @@ object Logtif {
             return
         }
 
-        val title = Class.forName(Thread.currentThread().stackTrace[3].className).simpleName ?: "unknownClassName"
+        val title = Class.forName(
+            Thread.currentThread().stackTrace[3].className
+        ).simpleName ?: "unknownClassName"
 
         showNotification(title, text, level, *args)
     }
@@ -89,13 +91,13 @@ object Logtif {
 
         val message = formatMessage(text, args)
 
-        val builder = NotificationCompat.Builder(context?.get()!!, channel)
+        val builder = NotificationCompat.Builder(context.get()!!, channel)
             .setSmallIcon(R.mipmap.ic_logtif_foreground)
             .setContentTitle(title)
             .setContentText("$prefix $message")
             .setPriority(priority)
 
-        with(NotificationManagerCompat.from(context?.get()!!)) {
+        with(NotificationManagerCompat.from(context.get()!!)) {
             notify(notificationId++.toInt(), builder.build())
         }
     }
@@ -106,7 +108,7 @@ object Logtif {
         }
 
         if (ContextCompat.checkSelfPermission(
-                context?.get()!!,
+                context.get()!!,
                 Manifest.permission.POST_NOTIFICATIONS
             ) != PackageManager.PERMISSION_GRANTED
         ) {
