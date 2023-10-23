@@ -19,24 +19,17 @@ Add Jitpack in your repositories:
 In Groovy:
 
 ```
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
-    }
+repositories {
+    maven { url 'https://jitpack.io' }
 }
 ```
 
 In Kotlin:
 
 ```
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        mavenCentral()
-        maven { url = uri("https://jitpack.io")
-    }
+repositories {
+    mavenCentral()
+    maven { url = uri("https://jitpack.io")
 }
 ```
 
