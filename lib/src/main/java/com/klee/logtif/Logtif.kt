@@ -26,6 +26,7 @@ object Logtif {
 
     private var notificationId: Long = 0
 
+    @JvmStatic
     fun init(context: Context, channel: String) {
         this.channel = channel
         this.context = WeakReference(context)
@@ -49,6 +50,7 @@ object Logtif {
         }
     }
 
+    @JvmStatic
     fun log(level: Int, text: String, vararg args: Any?) {
 
         if (context.get() == null) {
