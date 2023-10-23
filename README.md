@@ -2,9 +2,9 @@
 
 # Logtif
 
-Logtif is a small library that can help you during your exploratory tests.
+Logtif is a small library that can help you during exploratory tests.
 
-Indeed, you are not always in front of your computer and connected to adb looking at your logcat.
+You are not always in front of your computer and connected to adb looking at your logcat.
 
 That's where Logtif enters the party.
 
