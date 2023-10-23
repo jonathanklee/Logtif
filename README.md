@@ -16,20 +16,45 @@ Logtif allows you to easily create a notification to display some INFO, WARNING 
 
 Add Jitpack in your repositories:
 
+In Groovy:
+
 ```
-allprojects {
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        ...
+        mavenCentral()
         maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+In Kotlin:
+
+```
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        maven { url = uri("https://jitpack.io")
     }
 }
 ```
 
 Add the Logtif dependency:
 
+In Groovy:
+
 ```
 dependencies {
     implementation 'com.github.jonathanklee:Logtif:VERSION'
+}
+```
+
+In Kotlin:
+
+```
+dependencies {
+    implementation("com.github.jonathanklee:Logtif:VERSION")
 }
 ```
 
