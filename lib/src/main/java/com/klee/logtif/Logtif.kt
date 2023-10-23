@@ -24,6 +24,7 @@ object Logtif {
     private lateinit var channel: String
     private lateinit var context: WeakReference<Context>
 
+    private var isEnabled = false
     private var notificationId: Long = 0
 
     @JvmStatic
@@ -48,10 +49,16 @@ object Logtif {
 
             notificationManager.createNotificationChannel(notificationChannel)
         }
+
+        isEnabled = isLogtifEnabled(context)
     }
 
     @JvmStatic
     fun log(level: Int, text: String, vararg args: Any?) {
+
+        if (!isEnabled) {
+            return
+        }
 
         if (context.get() == null) {
             return
@@ -121,4 +128,18 @@ object Logtif {
     }
 
     private fun formatMessage(message: String, args: Array<out Any?>) = message.format(*args)
+
+    private fun isLogtifEnabled(context: Context): Boolean {
+
+        val clazz = Class.forName("android.os.SystemProperties")
+        val getMethod = clazz.getMethod("get", String::class.java)
+
+        val packageName = context.packageName
+        val result = getMethod.invoke(clazz, "logtif.$packageName") as String
+        if (result == "true") {
+            return true
+        }
+
+        return false
+    }
 }

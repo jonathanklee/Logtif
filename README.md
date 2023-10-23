@@ -72,6 +72,14 @@ Log some messages:
 Logtif.log(Logtif.ERROR, "App reached an invalid state %d", state)
 ```
 
+To activate Logtif, you need to write a system property related to the package name of your application:
+
+```
+adb shell setprop logtif.your.application.package.name true
+```
+
+then close and restart your application so that the system property is taken into account.
+
 :memo: For Android >= 13, make sure that the application using Logtig has requested the runtime permission [android.permission.POST_NOTIFICATIONS](https://developer.android.com/reference/android/Manifest.permission#POST_NOTIFICATIONS)
 
 # Credits
