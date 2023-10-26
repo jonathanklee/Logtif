@@ -65,10 +65,10 @@ Log some messages:
 Logtif.log(Logtif.ERROR, "App reached an invalid state %d", state)
 ```
 
-To activate Logtif, you need to write a system property related to the package name of your application:
+To activate Logtif, you need to write a global setting with the following adb command:
 
 ```
-adb shell setprop logtif.your.application.package.name true
+adb shell settings put global logtif 1
 ```
 
 then close and restart your application so that the system property is taken into account.

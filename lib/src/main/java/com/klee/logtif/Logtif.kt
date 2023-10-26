@@ -7,6 +7,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import android.provider.Settings
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -130,13 +131,7 @@ object Logtif {
     private fun formatMessage(message: String, args: Array<out Any?>) = message.format(*args)
 
     private fun isLogtifEnabled(context: Context): Boolean {
-
-        val clazz = Class.forName("android.os.SystemProperties")
-        val getMethod = clazz.getMethod("get", String::class.java)
-
-        val packageName = context.packageName
-        val result = getMethod.invoke(clazz, "logtif.$packageName") as String
-        if (result == "true") {
+        if (Settings.Global.getInt(context.contentResolver, "logtif", 0) == 1) {
             return true
         }
 
